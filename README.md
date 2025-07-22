@@ -57,7 +57,14 @@ The app will allow users to:
 Feel free to fork this repo and submit a pull request. Contributions are welcome!
 
 ---
+<<<<<<< HEAD
 
 ## Authors
 
 - [@NancyGoyal06](https://www.github.com/NancyGoyal06)
+=======
+## Authors
+
+- [@NancyGoyal06](https://www.github.com/NancyGoyal06)
+
+>>>>>>> 9281eb4 (added README.md file)
