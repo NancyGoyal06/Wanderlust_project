@@ -71,8 +71,9 @@ Wanderlust is a modern hotel and property booking platform built using the **MER
 2. **Setup .env :**
    ```env
    SECRET=your_session_secret
-   RAZORPAY_KEY_ID=rzp_test_XXXXXXXX
-   RAZORPAY_SECRET=your_razorpay_secret
+   CLOUD_API_SECRET= your_cloudapi_secret
+   CLOUD_API_KEY = your_cloud_api
+   CLOUD_NAME = your_cloud_name
    ```
 
 4. **Start the server:**
