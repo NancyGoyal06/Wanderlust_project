@@ -89,7 +89,7 @@ Wanderlust is a modern hotel and property booking platform built using the **MER
 
 ## Screenshots
 
-![Homepage Screenshot](public/images/Homepage.png)
+![Homepage Screenshot](public/images/homepage.png)
 
 ![AdminHomepage Screenshot](public/images/AdminHomepage.png)
 
