@@ -17,31 +17,61 @@
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
     font-size: 1rem;
+    min-width: 180px;
+  }
+  @media (max-width: 700px) {
+    .search-inp {
+      flex: 1;
+      width: 100%;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
   }
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
+    </div>
+    <!-- //search bar /// -->
+    <form class="d-flex align-items-center search-form me-2" role="search" method="GET" action="/listings">
+      <input 
+        class="form-control me-2 search-inp" 
+        type="search" 
+        placeholder="Search destinations" 
+        name="q" />
+      <button class="btn btn-search d-none d-md-block" type="submit">
+        <i class="fa-solid fa-magnifying-glass me-1"></i>Search
+      </button>
+      <button class="btn btn-search d-block d-md-none" type="submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <!-- /// toggle icon //// -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">    
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations"/>
-          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-        </form>
-      </div>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add new listing</a>
+        <% if(currUser && currUser.role === "admin") { %>
+          <a href="/listings/new" class=" nav-link btn-outline-light">Add New Listing</a>
+        <% } %>
         <% if(!currUser) { %>
           <a class="nav-link" href="/signup"><b>Sign Up</b></a>
           <a class="nav-link" href="/login"><b>Log In</b></a>
         <% } %>
+        <% if (currUser && currUser.role === 'admin') { %>
+          <a class="nav-link" href="/admin/dashboard"><b>Admin Panel</b></a>
+        <% } else if (currUser && currUser.role === 'user') { %>
+          <a class="nav-link" href="/bookings/mybookings"><b>My Bookings</b></a>
+          <a class="nav-link" href="/user/dashboard"><b>User Panel</b></a>
+        <% } %>
+
         <% if(currUser) { %>
           <a class="nav-link" href="/logout"><b>Log Out</b></a>
         <% } %>

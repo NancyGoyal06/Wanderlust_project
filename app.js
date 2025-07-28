@@ -19,6 +19,9 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+const bookingRoutes = require("./routes/bookings");
+
+
 
 
 main()
@@ -68,18 +71,11 @@ app.use((req,res,next) =>{
     next();
 });
 
-// app.get("/demouser", async(req,res) => {
-//     let fakeUser= new User({
-//         email:"student@gmail.com",
-//         username: "student"
-//     });
-//     let registeredUser = await User.register(fakeUser,"helloworld");
-//     res.send(registeredUser);
-// });
   
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
+app.use("/bookings", bookingRoutes);
 
 
 

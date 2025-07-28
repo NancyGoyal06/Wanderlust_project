@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+    <h2>Your Bookings</h2>
+    <% if (bookings.length === 0) { %>
+        <p class="text-muted">No bookings yet.</p>
+    <% } else { %>
+        <div class="row">
+            <% for(let booking of bookings) { %>
+                <div class="card mb-3 col-6">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/listings/<%= booking.listing._id %>">
+                                <%= booking.listing.title %>
+                            </a>
+                        </h5>
+                        <p class="card-text">Location: <%= booking.listing.location %>, <%= booking.listing.country %></p>
+                        <p class="card-text">Check-in: <%= booking.checkIn.toDateString() %></p>
+                        <p class="card-text">Check-out: <%= booking.checkOut.toDateString() %></p>
+                        <p class="card-text text-muted">Booked on <%= booking.createdAt.toDateString() %></p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    <% } %>
+</div>

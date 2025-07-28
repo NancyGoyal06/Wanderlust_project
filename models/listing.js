@@ -36,7 +36,17 @@ const listingSchema = new Schema({
         type: String,
         enum: ["Trending", "Rooms", "Iconic Cities", "Mountains", "Castles", "Amazing Pools", "Camping", "Arctic"],
         required: true
-    }
+    },
+    bookings: [
+        {
+            user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            },
+            checkIn: Date,
+            checkOut: Date,
+        }
+    ]
 });
 
 listingSchema.post("findOneAndDelete",async (listing) => {

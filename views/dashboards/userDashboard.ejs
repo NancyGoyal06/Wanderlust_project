@@ -1,0 +1,10 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5">
+    <h2 class="text-center">Welcome, <%= currUser.username %>!</h2>
+    <p class="text-center text-muted">Explore listings, leave reviews, and book your stay!</p>
+    <div class="text-center mt-4">
+        <a href="/listings" class="btn btn-dark me-3">View All Listings</a>
+        <a href="/logout" class="btn btn-outline-secondary">Logout</a>
+    </div>
+</div>

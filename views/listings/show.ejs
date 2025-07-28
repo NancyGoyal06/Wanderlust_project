@@ -16,7 +16,7 @@
     </div>
     <br>
 
-    <% if(currUser && listing.owner._id.equals(currUser._id)) {%>
+    <% if(currUser && currUser.role === "admin" && listing.owner._id.equals(currUser._id)) {%>
         <div class="btns">
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
 
@@ -56,10 +56,28 @@
             </div>
             <button class="btn btn-outline-dark">Submit</button>
         </form>
-    <% } %>
-   
-        <hr/>
+        <% } %>
 
+        <% if (currUser && currUser.role === "user") { %>
+        <hr> <br>
+            <h5>Book this Stay</h5>
+            <form action="/bookings/<%= listing._id %>" method="POST" class="row g-3">
+                <div class="col-md-6">
+                    <label for="checkIn" class="form-label">Check-in Date</label>
+                    <input type="date" class="form-control" name="checkIn" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="checkOut" class="form-label">Check-out Date</label>
+                    <input type="date" class="form-control" name="checkOut"  required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-success">Book Now</button>
+                </div>
+            </form>
+        <br>
+        <% } %>
+   
+        <hr/> <br>
         <p><b>All Reviews</b></p>
         <div class="row">
             <% for(let review of listing.reviews) { %> 
